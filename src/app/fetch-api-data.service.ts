@@ -163,16 +163,19 @@ deleteFavoriteMovie(MovieId: string): Observable<any> {
   );
 }
 
-// Non-typed response extraction
   private extractResponseData(res: Response): any {
     const body = res;
     return body || { };
   }
 
-private handleError(error: HttpErrorResponse): Observable <never> {
+private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
+      console.log(error);
+      console.log(error.error);
     console.error('Some error occurred:', error.error.message);
     } else {
+      console.log(error);
+      console.log(error.error);
     console.error(
         `Error Status code ${error.status}, ` +
         `Error body is: ${error.error}`);

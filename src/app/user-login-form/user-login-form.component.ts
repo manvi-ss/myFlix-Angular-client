@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observer } from 'rxjs';
-
 import { Router } from '@angular/router';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -18,8 +17,8 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
-    
+    public snackBar: MatSnackBar,
+    private router: Router
     ) { }
     ngOnInit(): void { }
 
@@ -39,6 +38,7 @@ export class UserLoginFormComponent implements OnInit {
         this.snackBar.open('You have been logged in', 'OK', {
           duration: 2000
         });
+        this.router.navigate(['movies']);
       },
       error: () => {
         this.snackBar.open('Sorry something went wrong. Please try again', 'OK', {
