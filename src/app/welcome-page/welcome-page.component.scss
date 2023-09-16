@@ -1,15 +1,16 @@
 .main-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40%;
+  text-align: center;
 }
-.first-button{
-    margin-bottom: 20px;
+.first-button {
+  margin-bottom: 20px;
+  background-color: brown;
 }
-.second_button{
-  
-    margin-bottom: 20px;
+.second_button {
+  margin-bottom: 20px;
 }

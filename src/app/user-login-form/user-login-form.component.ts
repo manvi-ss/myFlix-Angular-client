@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observer } from 'rxjs';
 import { Router } from '@angular/router';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -12,15 +11,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserLoginFormComponent implements OnInit {
 
-  @Input() userData = {Username:'', Password: ''};
+  @Input() userData = { Username: '', Password: '' };
 
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
     private router: Router
-    ) { }
-    ngOnInit(): void { }
+  ) { }
+  ngOnInit(): void { }
 
   /**
    * on login token, userdata, and Username will be stored in localstorage. 
@@ -33,7 +32,7 @@ export class UserLoginFormComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(data.user));
         localStorage.setItem('token', data.token);
         localStorage.setItem('Username', data.user.Username);
-  
+
         this.dialogRef.close();
         this.snackBar.open('You have been logged in', 'OK', {
           duration: 2000

@@ -9,7 +9,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observer } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration-form',
@@ -20,31 +20,34 @@ export class UserRegistrationFormComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
-constructor(
+  constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router
+  ) { }
 
-ngOnInit(): void {
-}
+  ngOnInit(): void {
+  }
 
-// This is the function responsible for sending the form inputs to the backend
-registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe({
-      next : (response) =>{
-        console.log('API response:', response);// Log the API response
-        // Logic for a successful user registration goes here! (To be implemented)
-     this.dialogRef.close(); // This will close the modal on success!
-     console.log(response);
-     this.snackBar.open("user registered successfully", 'OK', {
-      duration: 2000
-   });
-      },
-      error: (response) => {
-        this.snackBar.open(response, 'OK', {
-          duration: 2000
-        });
-      }
-    });
+  // This is the function responsible for sending the form inputs to the backend
+  registerUser(): void {
+    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
+      this.dialogRef.close(); // This will close the modal on success!
+      this.snackBar.open("user registered successfully", 'OK', {
+        duration: 2000
+      });
+      //log in user
+      this.fetchApiData.userLogin(this.userData).subscribe((result) => {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        localStorage.setItem('token', result.token);
+        this.router.navigate(['movies']);
+      })
+    }, (response) => {
+      this.snackBar.open(response, 'OK', {
+        duration: 2000
+      });
+    }
+    );
   }
 }
