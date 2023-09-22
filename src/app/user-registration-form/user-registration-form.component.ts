@@ -17,6 +17,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-registration-form.component.scss']
 })
 export class UserRegistrationFormComponent implements OnInit {
+  /**
+   * The @userData object will then be passed into the API call in the registerUser function.
+   * @userData object contains: @Username (required), @Password (required), @Email (required), @Birthday
+   */
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
@@ -30,7 +34,10 @@ export class UserRegistrationFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+   * This is the function responsible for sending the form inputs to the backend API 
+   * @function registerUser
+   */
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
       this.dialogRef.close(); // This will close the modal on success!

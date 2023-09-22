@@ -37,10 +37,18 @@ export class ProfilePageComponent implements OnInit {
       Password: ""
     }
   }
+  /**
+   * This function makes an API call to get User info from database
+   * @function getUser
+   * @returns JSON object with user information
+   */
   getUser(): User {
     return JSON.parse(localStorage.getItem('user') || '{}');
   }
-
+  /**
+   * This function makes an API call to update user data, such as username, password, email, or birthday
+   * @function updateUser
+   */
   updateUser(): void {
     this.fetchApiData.editUser(this.userData).subscribe((response) => {
       console.log(response)
@@ -51,6 +59,10 @@ export class ProfilePageComponent implements OnInit {
       })
     })
   }
+  /**
+   *  This function makes an API call to delete the user
+   * @function deleteUser
+   */
   deleteUser(): void {
     this.fetchApiData.deleteUser(this.userData.Username).subscribe((response) => {
       console.log(response)

@@ -27,6 +27,10 @@ export class MovieCardComponent implements OnInit {
     }
     this.getMovies();
   }
+  /**
+   * calla the getAllMovies api and sets the value
+   * @param id the movie id
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -65,6 +69,10 @@ export class MovieCardComponent implements OnInit {
     return this.fetchApiData.isFavoriteMovie(id)
   }
 
+  /**
+   * calls the deleteFavoriteMovie api and shows the snackbar if successful
+   * @param id the movie id
+   */
   removeFavorite(id: string): void {
     this.fetchApiData.deleteFavoriteMovie(id).subscribe(() => {
       this.snackBar.open('removed from favorites', 'OK', {

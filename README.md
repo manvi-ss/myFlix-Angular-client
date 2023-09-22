@@ -1,6 +1,39 @@
 # MyFlixAngularClient
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.2.
+This is an Angular application that utilizes a movie API as its backend. Within this application, users have the option to either log in if they are already registered or register if it's their first time using it. After registration, users can log in to access a list of movies.
+
+Users can perform several actions, including:
+
+1. Exploring movie details.
+2. Exploring director details.
+3. Exploring genre details.
+4. Adding or removing movies from their favorite list.
+5. Creating a Profile.
+6. Deleting user account
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
+
+### Deployed App Link
+
+[Click here to go to App](https://manvi-ss.github.io/myflix-angular-app/)
+
+## Prerequisites
+
+- Install Node.js
+- Install Angular CLI
+
+## Technologies Used
+
+- Angular
+- Typerscript
+- Node.js
+- Github Pages
+
+## Technology Version Used
+
+- Angular CLI: 16.2.2
+- Node: 16.19.0
+- Package Manager: npm 8.19.3
 
 ## Development server
 
